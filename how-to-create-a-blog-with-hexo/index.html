@@ -85,9 +85,29 @@
     
         <p>Hexo+GitHub Pagesでブログを公開するとき、参考にさせていただいたサイトだけではエラーが出てしまいました。<br>2018年9月時点において、Hexoブログを立ち上げる最新の方法をメモしておきます。</p>
 <a id="more"></a>
-<h2 id="参考サイト"><a href="#参考サイト" class="headerlink" title="参考サイト"></a>参考サイト</h2><p>まず、Hexoでブログを作成するにあたって、参考にさせていただいたサイトはこちら。<br>ありがとうございます。</p>
+<!-- toc -->
+<ul>
+<li><a href="#参考サイト">参考サイト</a></li>
+<li><a href="#作業の流れ">作業の流れ</a></li>
+<li><a href="#nodejsとnpmのインストール">Node.jsとnpmのインストール</a></li>
+<li><a href="#hexoインストール">Hexoインストール</a></li>
+<li><a href="#ブログ作成">ブログ作成</a><ul>
+<li><a href="#プレビューしてみる">プレビューしてみる</a></li>
+</ul>
+</li>
+<li><a href="#githubでリポジトリを作成">GitHubでリポジトリを作成</a></li>
+<li><a href="#_configymlを編集">「_config.yml」を編集</a><ul>
+<li><a href="#siteセクション">Siteセクション</a></li>
+<li><a href="#urlセクション">URLセクション</a></li>
+<li><a href="#deployセクション">Deployセクション</a></li>
+</ul>
+</li>
+<li><a href="#デプロイして公開する">デプロイして公開する</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="参考サイト">参考サイト</span></h2><p>まず、Hexoでブログを作成するにあたって、参考にさせていただいたサイトはこちら。<br>ありがとうございます。</p>
 <p><a href="https://tech.qookie.jp/posts/info-hexo-local/" target="_blank" rel="noopener">Hexoでローカルに静的なブログを作ってみて基本構成を把握する | Qookie Tech</a><br><a href="https://pepese.github.io/blog/hexo-github-pages/" target="_blank" rel="noopener">Hexoで作ったブログをGithub Pagesで公開 | ぺーぺーSEのテックブログ</a></p>
-<h2 id="作業の流れ"><a href="#作業の流れ" class="headerlink" title="作業の流れ"></a>作業の流れ</h2><ul>
+<h2><span id="作業の流れ">作業の流れ</span></h2><ul>
 <li>Node.js、npmのインストール</li>
 <li>Hexoインストール</li>
 <li>ブログ作成</li>
@@ -95,26 +115,26 @@
 <li>「_config.yml」を編集</li>
 <li>デプロイして公開</li>
 </ul>
-<h2 id="Node-jsとnpmのインストール"><a href="#Node-jsとnpmのインストール" class="headerlink" title="Node.jsとnpmのインストール"></a>Node.jsとnpmのインストール</h2><p><a href="https://nodejs.org/ja/" target="_blank" rel="noopener">Node.js</a>のホームページからインストールします。<br>npmは勝手にインストールされます。</p>
-<h2 id="Hexoインストール"><a href="#Hexoインストール" class="headerlink" title="Hexoインストール"></a>Hexoインストール</h2><p>ターミナルを立ち上げ、以下を入力。</p>
+<h2><span id="nodejsとnpmのインストール">Node.jsとnpmのインストール</span></h2><p><a href="https://nodejs.org/ja/" target="_blank" rel="noopener">Node.js</a>のホームページからインストールします。<br>npmは勝手にインストールされます。</p>
+<h2><span id="hexoインストール">Hexoインストール</span></h2><p>ターミナルを立ち上げ、以下を入力。</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<h2 id="ブログ作成"><a href="#ブログ作成" class="headerlink" title="ブログ作成"></a>ブログ作成</h2><p>任意の場所にデータを置いておくフォルダを作ります。（例：「hexo」）</p>
+<h2><span id="ブログ作成">ブログ作成</span></h2><p>任意の場所にデータを置いておくフォルダを作ります。（例：「hexo」）</p>
 <p>ターミナルで「cd」と入力した後、フォルダをドラッグ<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in hljs-built_in">cd</span> 「hexo」フォルダをドラッグ</span><br></pre></td></tr></table></figure></p>
 <p>「hexo」フォルダの中に、ブログを作ります。<br>initの後に任意の文字列を入力してください。<br>ここでは、「hexoblog」とします。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init hexoblog</span><br></pre></td></tr></table></figure></p>
 <p>成功したら、「hexoblog」ディレクトリに移動。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in hljs-built_in">cd</span> hexoblog</span><br></pre></td></tr></table></figure></p>
-<h3 id="プレビューしてみる"><a href="#プレビューしてみる" class="headerlink" title="プレビューしてみる"></a>プレビューしてみる</h3><p>サーバーを起動して、ローカルでブログをプレビューしてみます。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<h3><span id="プレビューしてみる">プレビューしてみる</span></h3><p>サーバーを起動して、ローカルでブログをプレビューしてみます。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
 <p>ターミナル画面にも出ますが、プレビューURLは以下。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000/</span><br></pre></td></tr></table></figure></p>
-<h2 id="GitHubでリポジトリを作成"><a href="#GitHubでリポジトリを作成" class="headerlink" title="GitHubでリポジトリを作成"></a>GitHubでリポジトリを作成</h2><p>GitHubでリポジトリを作成します。</p>
+<h2><span id="githubでリポジトリを作成">GitHubでリポジトリを作成</span></h2><p>GitHubでリポジトリを作成します。</p>
 <p>右上の「+」から「New repository」を選択。<br>「Repository Name」の項目に<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">owner名.github.io</span><br></pre></td></tr></table></figure></p>
 <p>と入力して、「Create repository」ボタンを押します。<br>※「owner名」は、自分のものを入力</p>
-<h2 id="「-config-yml」を編集"><a href="#「-config-yml」を編集" class="headerlink" title="「_config.yml」を編集"></a>「_config.yml」を編集</h2><p>hexoblogのフォルダにある「_config.yml」を編集します。</p>
-<h3 id="Siteセクション"><a href="#Siteセクション" class="headerlink" title="Siteセクション"></a>Siteセクション</h3><p>ブログ名や著者名などを編集します。</p>
+<h2><span id="_configymlを編集">「_config.yml」を編集</span></h2><p>hexoblogのフォルダにある「_config.yml」を編集します。</p>
+<h3><span id="siteセクション">Siteセクション</span></h3><p>ブログ名や著者名などを編集します。</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment hljs-comment"># Site</span></span><br><span class="line">title: ブログ名</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">author: 著者名</span><br><span class="line">language:</span><br><span class="line">timezone: Asia/Tokyo</span><br></pre></td></tr></table></figure>
-<h3 id="URLセクション"><a href="#URLセクション" class="headerlink" title="URLセクション"></a>URLセクション</h3><p>urlは以下を参照。<br>パーマリンクはタイトルのみにしました。</p>
+<h3><span id="urlセクション">URLセクション</span></h3><p>urlは以下を参照。<br>パーマリンクはタイトルのみにしました。</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment hljs-comment"># URL</span></span><br><span class="line">url: https://owner名.github.io/</span><br><span class="line">root: /</span><br><span class="line">permalink: :title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
-<h3 id="Deployセクション"><a href="#Deployセクション" class="headerlink" title="Deployセクション"></a>Deployセクション</h3><p>一番下に移動し、Deployセクションを編集します。<br>typeはgit、その下にrepoとbranchを追加。<br>※「owner名」は、自分のものを入力</p>
+<h3><span id="deployセクション">Deployセクション</span></h3><p>一番下に移動し、Deployセクションを編集します。<br>typeはgit、その下にrepoとbranchを追加。<br>※「owner名」は、自分のものを入力</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment hljs-comment"># Deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in hljs-built_in">type</span>: git</span><br><span class="line">  repo: https://owner名@github.com/owner名/リポジトリ名.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h2 id="デプロイして公開する"><a href="#デプロイして公開する" class="headerlink" title="デプロイして公開する"></a>デプロイして公開する</h2><p>いよいよ、デプロイ。<br>デプロイ用のプラグインをインストールしておきます。<br>ターミナルで以下を入力。</p>
+<h2><span id="デプロイして公開する">デプロイして公開する</span></h2><p>いよいよ、デプロイ。<br>デプロイ用のプラグインをインストールしておきます。<br>ターミナルで以下を入力。</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -S hexo-deployer-git</span><br></pre></td></tr></table></figure>
 <p>続けて、<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p>
 <p>さらに、<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
