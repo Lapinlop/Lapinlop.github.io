@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>Category: Hexo - Lapinlop</title>
+<title>Hexoで作ったブログに画像を投稿する方法 - Lapinlop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -61,20 +61,12 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5><i class="far fa-folder"></i>Hexo</h5>
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/how-to-add-images-to-hexo-blog/" itemprop="url">Hexoで作ったブログに画像を投稿する方法</a>
+            Hexoで作ったブログに画像を投稿する方法
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -92,54 +84,49 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <p>Hexoで作成したブログの記事中に画像を投稿したり、一覧ページにサムネイルを表示させる方法をまとめました。</p>
-        <p class="article-more-link">
-            <a href="/how-to-add-images-to-hexo-blog/#more">Read More</a>
-        </p>
+<a id="more"></a>
+<!-- toc -->
+<ul>
+<li><a href="#画像を投稿する">画像を投稿する</a></li>
+<li><a href="#記事一覧ページにサムネイルを表示する">記事一覧ページにサムネイルを表示する</a></li>
+<li><a href="#個別記事ページにカバー画像を表示する">個別記事ページにカバー画像を表示する</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="画像を投稿する">画像を投稿する</span></h2><p>画像を使うにはまず、画像データを入れておくフォルダを作ります。</p>
+<p>「source」ディレクトリ以下に「images」フォルダを作成。</p>
+<p>記事の中で、画像を入れたい位置に、<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![画像の名前](/images/画像ファイル名)</span><br></pre></td></tr></table></figure></p>
+<p>で表示されます。</p>
+<p>Hexoでは通常、Global Asset Folderモードになっているのですが、その場合、imagesの前に「/（スラッシュ）」を入れないと表示できないので注意。</p>
+<p>また、画像を多用する場合は、Post Asset Folderモードを利用するのもいいかもしれません。</p>
+<p>利用するには「_config.yml」を書き換えます。<br>初期状態ではfalseになっているので、trueにしてください。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: <span class="literal hljs-literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>新しく記事を作成すると、記事名と同じ名前のフォルダが作成され、その中に画像を入れます。<br>Post Asset Folderモードの場合は、Global〜のときとは反対で、「/（スラッシュ）」なしでないと、表示されませんでした。</p>
+<p>参考：<br><a href="https://hexo.io/docs/asset-folders.html#Global-Asset-Folder" target="_blank" rel="noopener">Asset Folders | Hexo</a></p>
+<h2><span id="記事一覧ページにサムネイルを表示する">記事一覧ページにサムネイルを表示する</span></h2><p>記事一覧ページでサムネイルを表示させるには、front-matterで画像を指定します。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title:</span><br><span class="line">date:</span><br><span class="line">tags:</span><br><span class="line">cover_index: /images/画像ファイル名 <span class="comment hljs-comment">#この行を追加</span></span><br></pre></td></tr></table></figure>
+<p>※「post_asset_folder: true」にしていない場合、「images」の前に「/（スラッシュ）」が必要。</p>
+<h2><span id="個別記事ページにカバー画像を表示する">個別記事ページにカバー画像を表示する</span></h2><p>個別記事にカバー画像を表示できるテーマの場合も、front-matterで画像を指定します。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title:</span><br><span class="line">date:</span><br><span class="line">tags:</span><br><span class="line">cover_detail: /images/画像ファイル名 <span class="comment hljs-comment">#この行を追加</span></span><br></pre></td></tr></table></figure></p>
+<p>※こちらも「post_asset_folder: true」にしていない場合、「images」の前に「/（スラッシュ）」が必要なので注意。</p>
+
     
     </div>
     
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/how-to-create-a-blog-with-hexo/">【2018年版】Hexo+GitHub Pagesでブログを公開する方法</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
 
 
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/how-to-create-a-blog-with-hexo/" itemprop="url">【2018年版】Hexo+GitHub Pagesでブログを公開する方法</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-09-01T04:39:06.000Z" itemprop="datePublished">Sep 1 2018</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Hexo+GitHub Pagesでブログを公開するとき、参考にさせていただいたサイトだけではエラーが出てしまいました。<br>2018年9月時点において、Hexoブログを立ち上げる最新の方法をメモしておきます。</p>
-        <p class="article-more-link">
-            <a href="/how-to-create-a-blog-with-hexo/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-    
     </div>
 </section>
     <footer class="footer">
