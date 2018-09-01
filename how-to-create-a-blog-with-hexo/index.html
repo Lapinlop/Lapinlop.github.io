@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>【2018年版】Hexo+GitHub Pagesでブログを公開する方法 - Lapinlop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Lapinlop
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            【2018年版】Hexo+GitHub Pagesでブログを公開する方法
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-09-01T04:39:06.000Z" itemprop="datePublished">Sep 1 2018</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Hexo+GitHub Pagesでブログを公開するとき、参考にさせていただいたサイトだけではエラーが出てしまいました。<br>2018年9月時点において、Hexoブログを立ち上げる最新の方法をメモしておきます。</p>
+<a id="more"></a>
+<h2 id="参考サイト"><a href="#参考サイト" class="headerlink" title="参考サイト"></a>参考サイト</h2><p>まず、Hexoでブログを作成するにあたって、参考にさせていただいたサイトはこちら。<br>ありがとうございます。</p>
+<p><a href="https://tech.qookie.jp/posts/info-hexo-local/" target="_blank" rel="noopener">Hexoでローカルに静的なブログを作ってみて基本構成を把握する | Qookie Tech</a><br><a href="https://pepese.github.io/blog/hexo-github-pages/" target="_blank" rel="noopener">Hexoで作ったブログをGithub Pagesで公開 | ぺーぺーSEのテックブログ</a></p>
+<h2 id="作業の流れ"><a href="#作業の流れ" class="headerlink" title="作業の流れ"></a>作業の流れ</h2><ul>
+<li>Node.js、npmのインストール</li>
+<li>Hexoインストール</li>
+<li>ブログ作成</li>
+<li>GitHubでリポジトリ作成</li>
+<li>「_config.yml」を編集</li>
+<li>デプロイして公開</li>
+</ul>
+<h2 id="Node-jsとnpmのインストール"><a href="#Node-jsとnpmのインストール" class="headerlink" title="Node.jsとnpmのインストール"></a>Node.jsとnpmのインストール</h2><p><a href="https://nodejs.org/ja/" target="_blank" rel="noopener">Node.js</a>のホームページからインストールします。<br>npmは勝手にインストールされます。</p>
+<h2 id="Hexoインストール"><a href="#Hexoインストール" class="headerlink" title="Hexoインストール"></a>Hexoインストール</h2><p>ターミナルを立ち上げ、以下を入力。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h2 id="ブログ作成"><a href="#ブログ作成" class="headerlink" title="ブログ作成"></a>ブログ作成</h2><p>任意の場所にデータを置いておくフォルダを作ります。（例：「hexo」）</p>
+<p>ターミナルで「cd」と入力した後、フォルダをドラッグ<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in hljs-built_in">cd</span> 「hexo」フォルダをドラッグ</span><br></pre></td></tr></table></figure></p>
+<p>「hexo」フォルダの中に、ブログを作ります。<br>initの後に任意の文字列を入力してください。<br>ここでは、「hexoblog」とします。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init hexoblog</span><br></pre></td></tr></table></figure></p>
+<p>成功したら、「hexoblog」ディレクトリに移動。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in hljs-built_in">cd</span> hexoblog</span><br></pre></td></tr></table></figure></p>
+<h3 id="プレビューしてみる"><a href="#プレビューしてみる" class="headerlink" title="プレビューしてみる"></a>プレビューしてみる</h3><p>サーバーを起動して、ローカルでブログをプレビューしてみます。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<p>ターミナル画面にも出ますが、プレビューURLは以下。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000/</span><br></pre></td></tr></table></figure></p>
+<h2 id="GitHubでリポジトリを作成"><a href="#GitHubでリポジトリを作成" class="headerlink" title="GitHubでリポジトリを作成"></a>GitHubでリポジトリを作成</h2><p>GitHubでリポジトリを作成します。</p>
+<p>右上の「+」から「New repository」を選択。<br>「Repository Name」の項目に<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">owner名.github.io</span><br></pre></td></tr></table></figure></p>
+<p>と入力して、「Create repository」ボタンを押します。<br>※「owner名」は、自分のものを入力</p>
+<h2 id="「-config-yml」を編集"><a href="#「-config-yml」を編集" class="headerlink" title="「_config.yml」を編集"></a>「_config.yml」を編集</h2><p>hexoblogのフォルダにある「_config.yml」を編集します。</p>
+<h3 id="Siteセクション"><a href="#Siteセクション" class="headerlink" title="Siteセクション"></a>Siteセクション</h3><p>ブログ名や著者名などを編集します。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment hljs-comment"># Site</span></span><br><span class="line">title: ブログ名</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">author: 著者名</span><br><span class="line">language:</span><br><span class="line">timezone: Asia/Tokyo</span><br></pre></td></tr></table></figure>
+<h3 id="URLセクション"><a href="#URLセクション" class="headerlink" title="URLセクション"></a>URLセクション</h3><p>urlは以下を参照。<br>パーマリンクはタイトルのみにしました。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment hljs-comment"># URL</span></span><br><span class="line">url: https://owner名.github.io/</span><br><span class="line">root: /</span><br><span class="line">permalink: :title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<h3 id="Deployセクション"><a href="#Deployセクション" class="headerlink" title="Deployセクション"></a>Deployセクション</h3><p>一番下に移動し、Deployセクションを編集します。<br>typeはgit、その下にrepoとbranchを追加。<br>※「owner名」は、自分のものを入力</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment hljs-comment"># Deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in hljs-built_in">type</span>: git</span><br><span class="line">  repo: https://owner名@github.com/owner名/リポジトリ名.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="デプロイして公開する"><a href="#デプロイして公開する" class="headerlink" title="デプロイして公開する"></a>デプロイして公開する</h2><p>いよいよ、デプロイ。<br>デプロイ用のプラグインをインストールしておきます。<br>ターミナルで以下を入力。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -S hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>続けて、<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p>
+<p>さらに、<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p>これで、GitHubのリポジトリにデータがアップロードされます。</p>
+<p>「_config.yml」で入力したURLにアクセスすると、ローカルで確認したブログ画面が表示されるはずです。</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Lapinlop&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("default");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
